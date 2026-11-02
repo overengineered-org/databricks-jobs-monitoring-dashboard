@@ -92,6 +92,24 @@ class DevContainerContractTests(unittest.TestCase):
         )
 
 
+class AgentInstructionTests(unittest.TestCase):
+    """Keep AGENTS.md the only agent instruction file. A CLAUDE.md hides AGENTS.md from Claude Code."""
+
+    def test_no_tool_specific_instruction_files(self) -> None:
+        tool_specific_files = (
+            "CLAUDE.md",
+            "GEMINI.md",
+            ".cursorrules",
+            ".windsurfrules",
+            ".clinerules",
+            ".github/copilot-instructions.md",
+        )
+        present = [name for name in tool_specific_files if (REPOSITORY_ROOT / name).exists()]
+
+        self.assertEqual(present, [], "put these rules in AGENTS.md instead")
+        self.assertTrue((REPOSITORY_ROOT / "AGENTS.md").is_file())
+
+
 class LocalValueSafetyTests(unittest.TestCase):
     """Keep account values out of the tracked bundle. Adopters commit their clones."""
 

@@ -29,6 +29,10 @@ Every coding agent reads [AGENTS.md](AGENTS.md): Claude Code 2.1.277 or later, C
 GitHub Copilot, Jules, Amp, and Zed. Keep project rules in `AGENTS.md` only, and do not add
 tool-specific instruction files.
 
+If your Claude Code session does not load `AGENTS.md`, for example an older version or a Bedrock
+session, create a `CLAUDE.local.md` in the repository root with the line `@AGENTS.md`. Git
+ignores that file.
+
 To work in a container, open the repository in a dev container, for example in GitHub Codespaces
 or VS Code. `.devcontainer/` installs the pinned uv and Databricks CLI and runs
 `uv sync --locked`.
