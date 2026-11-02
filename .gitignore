@@ -6,5 +6,7 @@ __pycache__/
 .databricks/
 # A killed select-jobs run can leave its temporary config copy.
 .workflow-monitoring.*.yml
-# Personal agent files, for example an import of docs/maintainers.md.
+# Personal agent files, for example an import of docs/maintainers.md or a local
+# Codex environment. Git ignores them, so bundle sync skips them too.
 CLAUDE.local.md
+.codex/
